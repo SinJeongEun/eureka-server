@@ -1,0 +1,19 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  server:
+    enable-self-preservation: false  # 네트워크 연결이 안되더라도 유지하는지에 대한 여부
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false # 이 애플리케이션은 eureka server용 이므로 client로 등록하지 않는다는 설정
+    fetch-registry: false       #client 에서 서비스 리스트르 캐싱
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
